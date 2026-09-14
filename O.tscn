@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://brwff6mx3ocaf"]
+
+[ext_resource type="Script" uid="uid://dgweqctnbwlvd" path="res://Enemy.gd" id="1_1d1qu"]
+[ext_resource type="Texture2D" uid="uid://bx88m5uf346" path="res://Sprites/Circle.png" id="2_1d1qu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7bn3"]
+size = Vector2(30, 30)
+
+[node name="O" type="Area2D" unique_id=1096865895]
+script = ExtResource("1_1d1qu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1851292704]
+texture = ExtResource("2_1d1qu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1044346457]
+shape = SubResource("RectangleShape2D_s7bn3")
