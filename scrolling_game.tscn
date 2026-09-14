@@ -1,3 +1,17 @@
 [gd_scene format=3 uid="uid://drqqas4wv2ue6"]
 
+[ext_resource type="Script" uid="uid://bxk75joor5ge" path="res://level.gd" id="1_3om8p"]
+[ext_resource type="Texture2D" uid="uid://v3jq565d7oh6" path="res://Sprites/Triangle.png" id="2_3om8p"]
+[ext_resource type="PackedScene" uid="uid://ctvpj3qirnhxc" path="res://Spawner.tscn" id="2_v1ub3"]
+
 [node name="Node2D" type="Node2D" unique_id=1076630601]
+script = ExtResource("1_3om8p")
+
+[node name="Spawner" parent="." unique_id=1662410144 instance=ExtResource("2_v1ub3")]
+position = Vector2(1129, 318)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=837275309]
+position = Vector2(76, 299)
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=1776066570]
+texture = ExtResource("2_3om8p")
