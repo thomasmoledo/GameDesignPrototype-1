@@ -3,15 +3,51 @@
 [ext_resource type="Script" uid="uid://bxk75joor5ge" path="res://level.gd" id="1_3om8p"]
 [ext_resource type="Texture2D" uid="uid://v3jq565d7oh6" path="res://Sprites/Triangle.png" id="2_3om8p"]
 [ext_resource type="PackedScene" uid="uid://ctvpj3qirnhxc" path="res://Spawner.tscn" id="2_v1ub3"]
+[ext_resource type="Script" uid="uid://b17n7ywe3yc44" path="res://Player.gd" id="3_ng4sg"]
+[ext_resource type="Texture2D" uid="uid://bppcs3nicln63" path="res://Sprites/HealthBarUnder.png" id="4_2d374"]
+[ext_resource type="Texture2D" uid="uid://d1dr11lqgccjf" path="res://Sprites/HealthBarProgress.png" id="5_38rtn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eae6q"]
+size = Vector2(33.5, 54)
 
 [node name="Node2D" type="Node2D" unique_id=1076630601]
 script = ExtResource("1_3om8p")
 
 [node name="Spawner" parent="." unique_id=1662410144 instance=ExtResource("2_v1ub3")]
-position = Vector2(1129, 318)
+position = Vector2(1129, 382)
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=837275309]
-position = Vector2(76, 299)
+[node name="Player" type="Area2D" parent="." unique_id=1383051290]
+position = Vector2(-117, -233)
+scale = Vector2(2, 2)
+script = ExtResource("3_ng4sg")
 
-[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=1776066570]
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=1776066570]
+position = Vector2(76, 266)
 texture = ExtResource("2_3om8p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=976151208]
+position = Vector2(75.75, 307.5)
+shape = SubResource("RectangleShape2D_eae6q")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1992953370]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1010833380]
+offset_left = 414.0
+offset_top = 183.0
+offset_right = 478.0
+offset_bottom = 199.0
+scale = Vector2(5.040926, 1.7344183)
+texture_under = ExtResource("4_2d374")
+texture_progress = ExtResource("5_38rtn")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=120806770]
+offset_left = 568.0
+offset_top = 218.0
+offset_right = 578.0
+offset_bottom = 241.0
+scale = Vector2(2, 2)
+text = "0"
+horizontal_alignment = 1
+
+[connection signal="area_entered" from="Player" to="Player" method="_on_area_entered"]
+[connection signal="area_exited" from="Player" to="Player" method="_on_area_exited"]
